@@ -1,0 +1,64 @@
+IaaC project : anisble_lab
+
+Iaac/ansible_lab/Vagrantfile  :  will start 3 vms and install required pacakges for ansible environment. 
+
+you can use this environment to build ansible playbooks.
+
+
+steps :  
+Step 1 :  Install virtual box (https://www.virtualbox.org)
+Step 2 :  Install vagrant  (https://www.vagrantup.com)
+Step 3 :  Download and  Vagrant file  
+       git clone https://github.com/malyabee/IaaC.git  
+Step 4  : starting virtual machines 
+
+ $ cd IaaC/ansible_lab
+ $ vagrant up
+
+#commands to login three virtual machines
+cd IaaC/ansible_lab 
+
+vagrant ssh ansiblecontroller
+vagrant ssh node01
+vagrant ssh node02
+
+# We need to copy "ansible" user keys to other nodes
+
+Steps to run on node01, node02
+1. login to node01 
+   $ vagrant ssh node01
+2. make sure "PasswordAuthentication yes" exist in /etc/ssh/sshd_config
+3. set password for ansible user  
+    $sudo passwd ansible 
+4.  created ansible sudoer file (i.e. /etc/sudoers.d/anisble) with following line
+      
+      $ sudo cat /etc/sudoers.d/anisble
+      ansible ALL=(ALL) NOPASSWD: ALL
+5. restart sshd 
+    sudo service sshd restart  
+
+Configuration Steps to run on ansiblecontroller node
+1. login to ansiblecontroller
+   $ vagrant ssh ansiblecontroller
+2. set password for ansible user, login as ansible user
+    $sudo passwd ansible
+    $ su ansible
+
+3. Generate key and copy public key to node01 and node02 servers for password less access
+    $ ssh-keygen
+    $ ssh-copy-id ansible@192.168.22.11
+    $ ssh-copy-id ansible@192.168.22.12
+
+ 4.  created ansible sudoer file (i.e. /etc/sudoers.d/anisble) with following line
+
+      $ sudo cat /etc/sudoers.d/anisble
+      ansible ALL=(ALL) NOPASSWD: ALL     
+ 5. restart sshd
+    sudo service sshd restart 
+
+*Hosts file modifications
+Append following lines to  /etc/hosts file in all nodes
+192.168.22.10	ansiblecontroller.example.com ansiblecontroller
+192.168.22.11   node01.example.com 	node01
+192.168.22.12   node02.example.com      node02
+
