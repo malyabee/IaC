@@ -1,0 +1,41 @@
+$ansiblescript = <<-SCRIPT
+sudo useradd ansible
+sudo yum update -y
+sudo yum install python2 epel-release -y
+sudo yum install -y ansible
+SCRIPT
+
+
+$nodescript = <<-SCRIPT
+sudo useradd ansible
+sudo yum update -y
+sudo yum install python2 epel-release -y
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  config.vm.provision "shell", inline: "echo Hello"
+
+  config.vm.define "ansiblecontroller" do |ansiblecontroller|
+    ansiblecontroller.vm.box = "centos/7"
+    ansiblecontroller.vm.network "private_network", ip: "192.168.22.10", virtualbox__intnet: "mynetwork01"
+    ansiblecontroller.vm.hostname = "ansiblecontroller.example.com"
+    # Installing required packages for ansible controller node
+    ansiblecontroller.vm.provision "shell", inline: $ansiblescript
+
+  end
+
+  config.vm.define "node01" do |node01|
+    node01.vm.box = "centos/7"
+    node01.vm.network "private_network", ip: "192.168.22.11", virtualbox__intnet: "mynetwork01"
+    node01.vm.hostname = "node01.example.com"
+    # Installing required packages for  node01
+    node01.vm.provision "shell", inline: $nodescript
+  end
+  config.vm.define "node02" do |node02|
+    node02.vm.box = "centos/7"
+    node02.vm.network "private_network", ip: "192.168.22.12", virtualbox__intnet: "mynetwork01"
+    node02.vm.hostname = "node01.example.com"
+    # Installing required packages for  node01
+    node02.vm.provision "shell", inline: $nodescript
+  end
+end
