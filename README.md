@@ -1,9 +1,12 @@
 IaaC - Infrastructure as a code 
 
 
-IaaC project : anisble_lab
+IaaC project : anisble_lab 
+ The main aim of this project is to provide a sigle Vagrant file to set up multi node virtual envirnment to learn ansible or devleop ansible palybooks.  
+ 
+ 
 
-Iaac/ansible_lab/Vagrantfile  :  will start 3 vms and install required pacakges for ansible environment. 
+Iaac/ansible_lab/Vagrantfile  :  will start 3 centos/7 vms and install required pacakges for ansible environment. 
 
 you can use this environment to build ansible playbooks.
 
