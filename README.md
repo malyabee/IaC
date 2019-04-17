@@ -34,6 +34,8 @@ vagrant ssh node02
 
 We can also login node01, node01 from ansiblecontroller without password.
 
+Host compatability
+    This Vagrant verified on Mac OS.
 
 
 This might be suitable for people who are going to attend the 'the Safari Live Training Course "Ansible in 3 Hours"' by Sander van Vugt
