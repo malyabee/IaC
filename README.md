@@ -8,11 +8,14 @@ Iaac/ansible_lab/Vagrantfile  :  will start 3 vms and install required pacakges 
 you can use this environment to build ansible playbooks.
 
 
-steps :  
+Steps :  
 Step 1 :  Install virtual box (https://www.virtualbox.org)
+
 Step 2 :  Install vagrant  (https://www.vagrantup.com)
+
 Step 3 :  Download and  Vagrant file  
        git clone https://github.com/malyabee/IaaC.git  
+
 Step 4  : starting virtual machines 
 
  $ cd IaaC/ansible_lab
