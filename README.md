@@ -22,6 +22,7 @@ Step 3 :  Download and  Vagrant file
 Step 4  : starting virtual machines 
 
  $ cd IaaC/ansible_lab
+ 
  $ vagrant up
 
 #commands to login three virtual machines
