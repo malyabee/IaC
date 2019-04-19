@@ -1,0 +1,12 @@
+A Vagrantfile to build multi node virtual environment to understand different load balancing options with ngnix
+ 
+
+
+
+Ref :
+
+https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/
+
+https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
+
+

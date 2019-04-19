@@ -1,0 +1,72 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$commonscript = <<-SCRIPT
+sudo yum update -y
+sudo yum install nginx epel-release -y
+sudo echo "192.168.22.10   lb.example.com lb" >> /etc/hosts
+sudo echo "192.168.22.11   web01.example.com   web01" >> /etc/hosts
+sudo echo "192.168.22.12   web02.example.com   web02" >> /etc/hosts
+sudo echo "LANG=en_US.utf-8" > /etc/environment
+sudo echo "LC_ALL=en_US.utf-8" >> /etc/environment
+SCRIPT
+
+$webscript = <<-SCRIPT
+cat /vagrant/certificates/iaas_lab.pub >> /home/vagrant/.ssh/authorized_keys
+SCRIPT
+
+$lbscript = <<-SCRIPT
+sudo cp -r /vagrant/certificates/iaas_lab /home/vagrant/.ssh/id_rsa
+sudo chmod 400  /home/vagrant/.ssh/id_rsa
+sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa
+SCRIPT
+
+Vagrant.configure("2") do |config|
+
+    config.vm.define "nginxlb" do |nginxlb|
+         
+         # Box 
+         nginxlb.vm.box = "centos/7"
+
+         # Memory and CPU allocation
+         nginxlb.vm.provider "virtualbox" do |v|
+            v.memory = 512
+            v.cpus = 1
+         end
+ 
+         # IP allocation
+         nginxlb.vm.network "private_network", ip: "192.168.22.10", virtualbox__intnet: "mynetwork01"
+         
+         # Host name allocation
+         nginxlb.vm.hostname = "ansiblecontroller.example.com"
+    
+         # Installing required packages for ansible controller node
+         nginxlb.vm.provision "shell", inline: $commonscript
+         nginxlb.vm.provision "shell", inline: $lbscript
+     end
+
+     config.vm.define "web01" do |web01|
+    
+          # Box
+          web01.vm.box = "centos/7"
+    
+          # Memory and CPU allocation
+          web01.vm.provider "virtualbox" do |v|
+              v.memory = 512
+              v.cpus = 1
+          end
+
+          web01.vm.network "private_network", ip: "192.168.22.11", virtualbox__intnet: "mynetwork01"
+    
+          web01.vm.hostname = "web01.example.com"
+         
+          # Installing required packages for  web01
+          web01.vm.provision "shell", inline: $commonscript
+          web01.vm.provision "shell" do |shell|
+               shell.args = "02"
+               shell.path = "web.sh"
+           end
+    
+ 
+      end
+end
