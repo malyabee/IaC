@@ -1,9 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 $commonscript = <<-SCRIPT
 sudo yum update -y
 sudo yum install python2 epel-release -y
 sudo echo "192.168.22.10	ansiblecontroller.example.com ansiblecontroller" >> /etc/hosts
 sudo echo "192.168.22.11   node01.example.com 	node01" >> /etc/hosts
 sudo echo "192.168.22.12   node02.example.com      node02" >> /etc/hosts
+sudo echo "LANG=en_US.utf-8" > /etc/environment
+sudo echo "LC_ALL=en_US.utf-8" >> /etc/environment
 SCRIPT
 
 $nodescript = <<-SCRIPT
@@ -18,43 +23,66 @@ sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.provision "shell", inline: "echo Hello"
 
-  config.vm.define "ansiblecontroller" do |ansiblecontroller|
-    ansiblecontroller.vm.box = "centos/7"
-    ansiblecontroller.vm.provider "virtualbox" do |v|
-          v.memory = 512
-          v.cpus = 1
-       end
-    ansiblecontroller.vm.network "private_network", ip: "192.168.22.10", virtualbox__intnet: "mynetwork01"
-    ansiblecontroller.vm.hostname = "ansiblecontroller.example.com"
-    # Installing required packages for ansible controller node
-    ansiblecontroller.vm.provision "shell", inline: $commonscript
-    ansiblecontroller.vm.provision "shell", inline: $ansiblescript
-  end
+    config.vm.define "ansiblecontroller" do |ansiblecontroller|
+         
+         # Box 
+         ansiblecontroller.vm.box = "centos/7"
 
-  config.vm.define "node01" do |node01|
-    node01.vm.box = "centos/7"
-    node01.vm.provider "virtualbox" do |v|
-          v.memory = 512
-          v.cpus = 1
-       end
-    node01.vm.network "private_network", ip: "192.168.22.11", virtualbox__intnet: "mynetwork01"
-    node01.vm.hostname = "node01.example.com"
-    # Installing required packages for  node01
-    node01.vm.provision "shell", inline: $commonscript
-    node01.vm.provision "shell", inline: $nodescript
-  end
-  config.vm.define "node02" do |node02|
-    node02.vm.box = "centos/7"
-    node02.vm.provider "virtualbox" do |v|
-          v.memory = 512
-          v.cpus = 1
-       end
-    node02.vm.network "private_network", ip: "192.168.22.12", virtualbox__intnet: "mynetwork01"
-    node02.vm.hostname = "node02.example.com"
-    # Installing required packages for  node01
-    node02.vm.provision "shell", inline: $commonscript
-    node02.vm.provision "shell", inline: $nodescript
-  end
+         # Memory and CPU allocation
+         ansiblecontroller.vm.provider "virtualbox" do |v|
+            v.memory = 512
+            v.cpus = 1
+         end
+ 
+         # IP allocation
+         ansiblecontroller.vm.network "private_network", ip: "192.168.22.10", virtualbox__intnet: "mynetwork01"
+         
+         # Host name allocation
+         ansiblecontroller.vm.hostname = "ansiblecontroller.example.com"
+    
+         # Installing required packages for ansible controller node
+         ansiblecontroller.vm.provision "shell", inline: $commonscript
+         ansiblecontroller.vm.provision "shell", inline: $ansiblescript
+     end
+
+     config.vm.define "node01" do |node01|
+    
+          # Box
+          node01.vm.box = "centos/7"
+    
+          # Memory and CPU allocation
+          node01.vm.provider "virtualbox" do |v|
+              v.memory = 512
+              v.cpus = 1
+          end
+
+          node01.vm.network "private_network", ip: "192.168.22.11", virtualbox__intnet: "mynetwork01"
+    
+          node01.vm.hostname = "node01.example.com"
+         
+          # Installing required packages for  node01
+          node01.vm.provision "shell", inline: $commonscript
+          node01.vm.provision "shell", inline: $nodescript
+      end
+      config.vm.define "node02" do |node02|
+
+          # Box
+          node02.vm.box = "centos/7"
+
+          # Memory and CPU allocation
+          node02.vm.provider "virtualbox" do |v|
+              v.memory = 512
+              v.cpus = 1
+          end
+    
+          node02.vm.network "private_network", ip: "192.168.22.12", virtualbox__intnet: "mynetwork01"
+   
+          node02.vm.hostname = "node02.example.com"
+    
+
+         # Installing required packages for  node01
+         node02.vm.provision "shell", inline: $commonscript
+         node02.vm.provision "shell", inline: $nodescript
+      end
 end
