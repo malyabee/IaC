@@ -5,7 +5,15 @@ This project host diffiert cluster environments as a Code.
 
 ## IaaC project : anisble_lab  
  A Vagrantfile to build multi node virtual envirnment to learn ansible or devleop ansible palybooks.  
- Iaac/ansible_lab/Vagrantfile  :  will start 3 centos/7 vms and install required pacakges for ansible environment. you can use this environment to build ansible playbooks.
+ Iaac/ansible_lab/Vagrantfile  : This Vagrantfile contains the information needed to create a virtual ansible_lab cluster comprising Three virtual machines.
+ 
+
+1. One Ansible controller  server (centos/7)
+    The ansible controler server configured with ansible software and ready to develop play books
+    The ansible controller server also has a passphraseless SSH key for access to the other nodes in the virtual cluster.
+
+2. two normal nodes (node01 and node02 )
+     These two servers can be used as a target nodes for ansible playbooks. 
 
 
 ### Steps :  
