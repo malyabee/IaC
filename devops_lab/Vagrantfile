@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$devopsscript = <<-SCRIPT
+sudo yum update -y
+# sudo yum install python2 epel-release -y
+ sudo yum install -y yum-utils device-mapper-persistent-data   lvm2
+ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo -y
+sudo echo "192.168.22.10  devops.example.com devops" >> /etc/hosts
+ sudo yum install docker-ce docker-ce-cli containerd.io -y
+sudo echo "LANG=en_US.utf-8" > /etc/environment
+sudo echo "LC_ALL=en_US.utf-8" >> /etc/environment
+SCRIPT
+
+
+Vagrant.configure("2") do |config|
+
+    config.vm.define "devops" do |devops|
+         
+         # Box 
+         devops.vm.box = "centos/7"
+
+         # Memory and CPU allocation
+         devops.vm.provider "virtualbox" do |v|
+            v.memory = 4096
+            v.cpus = 2
+         end
+ 
+         # IP allocation
+         devops.vm.network "private_network", ip: "192.168.22.10", virtualbox__intnet: "mynetwork01"
+         
+         # Host name allocation
+         devops.vm.hostname = "devops.example.com"
+    
+         # Installing required packages for ansible controller node
+         devops.vm.provision "shell", inline: $devopsscript
+     end
+
+end
