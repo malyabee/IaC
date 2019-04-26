@@ -6,6 +6,7 @@ sudo yum update -y
 sudo yum install python2 epel-release -y
 sudo yum install python-pip -y
 sudo pip install virtualenv 
+sudo pip install --upgrade pip
 sudo echo "LANG=en_US.utf-8" > /etc/environment
 sudo echo "LC_ALL=en_US.utf-8" >> /etc/environment
 sudo mkdir -p /home/vagrant/django_lab
