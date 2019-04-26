@@ -26,15 +26,98 @@
 
 
 
-### commands to loginvirtual machine
+### commands to login virtual machine
      cd IaaC/django_lab 
 
      vagrant ssh 
      
 
+## Django installation through pip in a Virtualenv
 
+Create a new project directory 
+
+     mkdir ~/django_lab/<newproject>
+     cd  ~/django_lab/<newproject>
+
+Now create a virtual environment with in <newprojcet> directory
+ 
+    virtualenv <newenv>
+    
+ 
+To install pacakages into the isolated environment, you must activate it with following command
+
+     source <newenv>/bin/activate
+     
+Install django usign pip
+
+     pip install django
+     
+  
+Verify installation using 
+
+     djaongo-admin --version
+     
+to leave virtual environment  you can run dactivate command
+     
+     deactivate 
+  
+  
+To re-activate your virtual environment
+
+    cd ~/django_lab/<newproject>
+    source <newenv>/bin/activiate
+    
+Note : <newproject> is your project name. you can choose any name
+       <newenv> is your virutual environment name.
+
+### Example commands to deploy Django
+
+     mkdir  ~/django_lab/firstproject
+     cd  ~/django_lab/firstproject
+     virtualenv denv
+     source denv/bin/activate
+     pip install django
+     django-admin --version
+     deactivate 
+     
+### Creating Simple project 
+
+   
+     cd  ~/django_lab/firstproject
+     source denv/bin/activate
+     django-admin --version
+     django-admin startproject myproject .
+     python manage.py migrate
+     
+     # to create super user run following command and set username, emailid. password
+     python manage.py createsuperuser
+     
+     #run django based server using following command
+     python manage.py runserver 0.0.0.0:8080
+     
+     
+     # Visit localhost:8080 on host machine browser
+        
+        http://localhost:8080
+        
+      
+      you can also verify http://localhost:8080/admin url as well
+      
+      --- Happy coding --
+      
+      
+      # To stop django development server by typing "CTRL-C" in your django guest terminal.
+         
+     
+     
+     
 
      
-Note 
-Host compatability
+### Note 
+ Host compatability :
+ 
     This Vagrant verified on Mac OS.
+
+
+### Reference
+   This Vagrant file build used "Install through pip in a Virtualenv:" method for django environment. This method is described at https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-centos-7
