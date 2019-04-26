@@ -2,10 +2,15 @@
 
 This project host differt cluster environments (Infrasturcture as a Code) for Learn and Development.
 
-1
+
+In this projects you can find multiple Vagrantfiles to setup different dev environments based on "centos/7"
+All these Vagrant files configured  virtualbox as a provider. 
 
 
+Install virtual box from (https://www.virtualbox.org)
+Install vagrant  from  (https://www.vagrantup.com)
 
+You can run Vagrant, Virtualbox on MacOS, Windows and Linux. 
 
 
 ### Vagrant Command Summary
