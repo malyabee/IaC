@@ -46,6 +46,6 @@ Vagrant.configure("2") do |config|
          
          # Share an additional folder to guest VM.  The first argument is the path on the hst to the actual folder. 
          # The Second argument is the path on the guest to mount the floder
-         django.vm.synced_folder "django_lab", "/home/vagrant/django_lab",  create: true, type: "virtualbox", rsync__auto: true , owner: "vagrant", group: "vagrant", mount_options:["dmode=775,fmode=664"]
+         django.vm.synced_folder "django_lab", "/home/vagrant/django_lab",  create: true, type: "virtualbox", rsync__auto: true , owner: "vagrant", group: "vagrant", mount_options:["dmode=775,fmode=777"]
    end
 end
