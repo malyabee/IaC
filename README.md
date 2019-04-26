@@ -3,7 +3,7 @@
 This project host differt cluster environments (Infrasturcture as a Code) for Learn and Development.
 
 
-In this projects you can find multiple Vagrantfiles to setup different dev environments based on "centos/7"
+In this project you can find multiple Vagrantfiles to setup different dev environments based on "centos/7"
 All these Vagrant files configured  virtualbox as a provider. 
 
 
