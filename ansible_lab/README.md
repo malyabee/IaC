@@ -7,8 +7,8 @@
     The ansible controler server configured with ansible software and ready to develop play books
     The ansible controller server also has a passphraseless SSH key for access to the other nodes in the virtual cluster.
 
-2. two normal nodes (node01 and node02 )
-     These two servers can be used as a target nodes for ansible playbooks. 
+2. two normal nodes (node01 , node02 and node03 )
+     These three servers can be used as a target nodes for ansible playbooks. 
 
 
 ### Steps :  
