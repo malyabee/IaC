@@ -31,7 +31,8 @@
      vagrant ssh ansiblecontroller
      vagrant ssh node01
      vagrant ssh node02
-   You can also login node01, node01 from ansiblecontroller without password.
+     vagrant ssh node03
+   You can also login node01, node02 and node03 from ansiblecontroller without password.
 
 Note 
 Host compatability
