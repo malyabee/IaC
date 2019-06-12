@@ -35,7 +35,7 @@
    You can also login node01, node02 and node03 from ansiblecontroller without password.
 
 
-# Host compatability :
+#### Host compatability :
 
     This Vagrant verified on Mac OS.
 
