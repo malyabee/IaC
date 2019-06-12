@@ -1,9 +1,9 @@
 # IaaC - Infrastructure as a code 
 
-This project host differt cluster environments (Infrasturcture as a Code) for Learn and Development.
+This project host differt cluster environments (Infrasturcture as a Code) for Learning different tools and to build Development environment.
 
 
-In this project you can find multiple Vagrantfiles to setup different dev environments based on "centos/7"
+In this project you can find multiple Vagrantfiles to setup different virtual environments based on "centos/7"
 All these Vagrant files configured  virtualbox as a provider. 
 
 
@@ -123,7 +123,6 @@ vagrant port <vm name>
 Refer to the Vagrant documentation for more information:
 
 https://www.vagrantup.com/docs
-
 
 
 This might be suitable for people who are going to attend the 'the Safari Live Training Course "Ansible in 3 Hours"' by Sander van Vugt
