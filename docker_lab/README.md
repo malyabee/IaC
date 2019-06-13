@@ -31,7 +31,22 @@
        [vagrant@docker ~]$ sudo systemctl start docker
        
        
-      
+   
+   
+#### Running wordpress container  
+         [vagrant@docker ~]$ mkdir wordpress
+         [vagrant@docker ~]$ cd wordpress
+         [vagrant@docker wordpress]$ docker pull tutum/wordpress
+         [vagrant@docker wordpress]$ docker run -d -p 4000:80 --name blog tutum/wordpress
+         
+         # You can access wordpress using browse http://localhost:4000 
+         
+         # if you want to list our running containers use following command.
+         [vagrant@docker wordpress]$ docker container ls
+         
+         
+         
+         
      
 ### Host compatability :
 
