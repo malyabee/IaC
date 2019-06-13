@@ -35,7 +35,7 @@
        
    
    
-#### Running wordpress container  
+#### Docker rommands to run wordpress and mysql in a  container  
          [vagrant@docker ~]$ mkdir wordpress
          [vagrant@docker ~]$ cd wordpress
          [vagrant@docker wordpress]$ docker pull tutum/wordpress
@@ -51,8 +51,22 @@
          # Command to remove blog container 
          [vagrant@docker wordpress]$ docker rm -f blog
          
+         # Docker command to login into container 
+         [vagrant@docker wordpress]$ docker exec -it blog bash
          
          
+#### Docker rommands to run wordpress and mysql in different containers
+         [vagrant@docker ~]$ mkdir wordpress02
+         [vagrant@docker ~]$ cd wordpress02
+         [vagrant@docker wordpress02]$ docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=yoursecretpassword -d mysql
+         [vagrant@docker wordpress02]$ docker run --name wordpress --link wp-mysql:mysql -p 8000:80 -d  wordpress
+         
+         
+         # command to loging wordpress container
+         [vagrant@docker wordpress02]$ docker exec -it  wordpress bash
+         
+         
+
          
      
 ### Host compatability :
