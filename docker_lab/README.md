@@ -48,6 +48,9 @@
            (or)
          [vagrant@docker wordpress]$ docker ps
          
+         # Command to remove blog container 
+         [vagrant@docker wordpress]$ docker rm -f blog
+         
          
          
          
