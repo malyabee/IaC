@@ -24,6 +24,8 @@
 
      vagrant ssh 
      
+     
+## Docker commands       
 ###  commands to verify docker version  and start docker daemon
       [vagrant@docker ~]$ docker version
        
@@ -43,6 +45,8 @@
          
          # if you want to list our running containers use following command.
          [vagrant@docker wordpress]$ docker container ls
+           (or)
+         [vagrant@docker wordpress]$ docker ps
          
          
          
