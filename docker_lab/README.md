@@ -39,6 +39,11 @@
          [vagrant@docker ~]$ mkdir wordpress
          [vagrant@docker ~]$ cd wordpress
          [vagrant@docker wordpress]$ docker pull tutum/wordpress
+         
+         # To list out local docker images
+         [vagrant@docker wordpress]$ docker image ls
+         
+         # To run an image and to create a container based on image
          [vagrant@docker wordpress]$ docker run -d -p 4000:80 --name blog tutum/wordpress
          
          # You can access wordpress using browse http://localhost:4000 
