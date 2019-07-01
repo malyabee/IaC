@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/mbeegala/vagrant_projects/IaaC/nginx_load-balancer_lab","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
