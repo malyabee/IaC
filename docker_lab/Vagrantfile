@@ -63,9 +63,9 @@ Vagrant.configure("2") do |config|
          # via 127.0.0.1 to disable public access
         
          # Host name allocation
-         docker_lab.vm.hostname = "prometheusStack.example.com"
+         docker_lab.vm.hostname = "docker_lab.example.com"
 
-         # Installing required packages for ansible controller node
+         # Installing required packages for docker  node
         docker_lab.vm.provision "shell", inline: $commonscript
        
          
