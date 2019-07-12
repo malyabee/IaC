@@ -7,7 +7,7 @@
     The ansible controler server configured with ansible software and ready to develop play books
     The ansible controller server also has a passphraseless SSH key for access to the other nodes in the virtual cluster.
 
-2. two normal nodes (node01 , node02 and node03 )
+2. Three normal nodes (node01 , node02 and node03 )
      These three servers can be used as a target nodes for ansible playbooks. 
 
 
@@ -17,7 +17,10 @@
   Step 2 :  Install vagrant  (https://www.vagrantup.com)
 
   Step 3 :  Download and  Vagrant file  
-       git clone https://github.com/malyabee/IaaC.git  
+       git clone https://github.com/malyabee/IaaC.git 
+          or 
+       Downlaod https://github.com/malyabee/IaaC/archive/master.zip and unzip master file 
+       
 
   Step 4  : starting virtual machines 
 
@@ -37,7 +40,7 @@
 
 #### Host compatability :
 
-    This Vagrant verified on Mac OS.
+    This Vagrant verified on Mac and Windows
 
 
 You can learn ansible using
