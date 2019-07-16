@@ -17,6 +17,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo yum install git -y
 sudo yum install jq -y
+sudo yum install net-tools -y
 SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
