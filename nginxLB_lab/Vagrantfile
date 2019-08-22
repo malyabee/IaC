@@ -20,6 +20,16 @@ sudo yum update -y
 sudo yum install nginx -y
 sudo systemctl enable nginx
 sudo systemctl start nginx
+
+
+sudo yum -y install firewalld
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+
+sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
+
+sudo firewall-cmd --reload
+
 sudo cp -r /vagrant/certificates/iaas_lab /home/vagrant/.ssh/id_rsa
 sudo chmod 400  /home/vagrant/.ssh/id_rsa
 sudo chown vagrant:vagrant /home/vagrant/.ssh/id_rsa
