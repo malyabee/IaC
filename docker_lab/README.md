@@ -21,7 +21,7 @@
        # "vagrant up" might take a while for first time
 
 ### commands to login docker virtual machines
-     cd IaaC/docker_lab 
+    
 
      vagrant ssh 
      
