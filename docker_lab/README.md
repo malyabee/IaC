@@ -77,13 +77,13 @@
 ### Docker volumes
 
 Step 1 :  Create a volume using following command. This command will create a volume with name "webvol"
-      docker volume create webvol
+         docker volume create webvol
 
 Step 2 : List volumes using 
-       docker volume ls
+          docker volume ls
 
 Step 3 : Attaching volumes with httpd container
-       docker container run -d -p 8000:80 --name=web --mount source=files,target=/local/apache2/htdocs httpd
+          docker container run -d -p 8000:80 --name=web --mount source=webvol,target=/local/apache2/htdocs httpd
 
 
 
